@@ -14,6 +14,7 @@ import "../styles/overview.css";
 import "../styles/transactions.css";
 import "../styles/transactions-detail.css";
 import "../styles/edit-profile.css";
+import "../styles/navbar-log-in.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 
@@ -43,9 +44,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
 
         {/* Call Bootstrap JS */}
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
         <script
-          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+          integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
           crossOrigin="anonymous"
         ></script>
       </Head>
