@@ -1,16 +1,18 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import GameItem from "../../molecules/GameItem";
 import useAsyncEffect from "use-async-effect";
+import { getFeaturedGame } from "../../../services/player";
 
 export default function FeaturedGame() {
   const [gameList, setGameList] = useState([]);
+
+  const getFeatureGameList = useCallback(async () => {
+    const data = await getFeaturedGame();
+    setGameList(data);
+  }, [getFeaturedGame]);
+
   useAsyncEffect(async () => {
-    const response = await axios.get(
-      "https://api-bwa-storegg.herokuapp.com/api/v1/players/landingpage"
-    );
-    console.log(response.data)
-    setGameList(response.data.data);
+    getFeatureGameList();
   }, []);
   return (
     <section className="featured-game pt-50 pb-50">
