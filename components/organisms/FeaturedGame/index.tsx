@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 import GameItem from "../../molecules/GameItem";
 import useAsyncEffect from "use-async-effect";
 import { getFeaturedGame } from "../../../services/player";
+import { GameItemTypes } from "../../../services/data-types";
 
 export default function FeaturedGame() {
   const [gameList, setGameList] = useState([]);
@@ -14,6 +15,9 @@ export default function FeaturedGame() {
   useAsyncEffect(async () => {
     getFeatureGameList();
   }, []);
+
+  const API_IMG = process.env.NEXT_PUBLIC_IMG;
+
   return (
     <section className="featured-game pt-50 pb-50">
       <div className="container-fluid">
@@ -25,13 +29,13 @@ export default function FeaturedGame() {
           className="d-flex flex-row flex-lg-wrap overflow-setting justify-content-lg-between gap-lg-3 gap-4"
           data-aos="fade-up"
         >
-          {gameList.map((item) => {
+          {gameList.map((item: GameItemTypes) => {
             return (
               <GameItem
                 key={item._id}
                 title={item.name}
                 category={item.category.name}
-                thumbnail={`https://api-bwa-storegg.herokuapp.com/api/uploads/${item.thumbnail}`}
+                thumbnail={`${API_IMG}/${item.thumbnail}`}
               />
             );
           })}
